@@ -1,0 +1,36 @@
+// connect container to network
+1. docker network
+// create network
+2. docker network create backend-network
+
+// how to delete docker network
+docker network rm backend-network
+
+// backend-network === เหมือนกัน === name-network
+docker run --name <name-container> --network <name-network> -p <host>:<docker> -v <สถานที่เก็บ file>:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=<password> -d <name-container-image>
+3. docker run --name mysql-server --network backend-network -p 3306:3306 -v c:/mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=1234 -d mysql:latest
+
+
+// create field mysql
+travel.sql === field
+1234 is password of mysql
+
+4.docker exec -i <name-container> sh -c "exec  mysql -uroot -p"1234"" < travel.sql
+
+// latest === version
+5. docker build -t <name-build-docker>:latest .
+
+// run docker
+
+docker run --name <name-build-docker> --network <backend-network> -p 3333:3333 -d <name-image>:latest
+
+
+
+// folder client
+// create everything
+6. npm run build
+7. docker build -t react-app:lastes .
+8. docker run --name react-app -p 80:80 -d react-app:latest
+
+
+
